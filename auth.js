@@ -4,10 +4,8 @@ import url from 'url';
 import open from 'open';
 import destroyer from 'server-destroy';
 
-const scope = ['https://www.googleapis.com/auth/gmail.modify',
-    'https://www.googleapis.com/auth/gmail.send'];
 
-function getAuthenticatedClient(keys) {
+function getAuthenticatedClient(scope, keys) {
     return new Promise((resolve, reject) => {
         // create an oAuth client to authorize the API call.  Secrets are kept in a `keys.json` file,
         // which should be downloaded from the Google Developers Console.

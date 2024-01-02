@@ -10,14 +10,16 @@ const keys = JSON.parse(
     )
 );
 
-const replyText = 'This ia an automated reply';
+const scope = ['https://www.googleapis.com/auth/gmail.modify',
+    'https://www.googleapis.com/auth/gmail.send'];
+
+const replyText = 'This is an automated reply';
 const addedLabel = 'AUTOREPLY';
 const inboxId = 'INBOX';
 
 async function main() {
-    const client = await getAuthenticatedClient(keys);
+    const client = await getAuthenticatedClient(scope, keys);
     const repliedLabelId = await createLabel(client, addedLabel);
-    console.log(repliedLabelId)
 
     while (true) {
         console.log('Looking for new mails...')
